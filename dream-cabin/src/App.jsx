@@ -9,15 +9,27 @@ import PageNotFound from './pages/PageNotFound';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import GlobalStyles from './styles/GlobalStyle';
 import AppLayout from './ui/AppLayout';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
+const SIXSTY_SECONDS = 60 * 1000;
 // const StyleApp = styled.div`
 //   /* background-color: orchid; */
 //   padding: 20px;
 // `;
 
+const queryClient =new QueryClient({
+  defaultOptions:{
+    queries:{
+      staleTime:SIXSTY_SECONDS,
+    }
+  }
+});
+
 function App() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false}/>
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
@@ -35,7 +47,7 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
-    </>
+   </QueryClientProvider>
   );
 }
 
