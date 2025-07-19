@@ -41,5 +41,5 @@ export async function getSettings() {
 export async function updateSetting(obj) {
   const id = currentSettingId !== -1 ? currentSettingId : 1;
   const url = SETTINGS + PERFORM_UPDATE_BY_ID(id);
-  return await updateData({url, obj});
+  return await updateData({ url, obj });
 }

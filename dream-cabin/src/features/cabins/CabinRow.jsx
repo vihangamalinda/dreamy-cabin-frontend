@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import styled from 'styled-components';
-import {formatCurrency} from "../../utils/helpers.js";
+import { formatCurrency } from '../../utils/helpers.js';
 
 const TableRow = styled.div`
   display: grid;
@@ -41,21 +41,17 @@ const Discount = styled.div`
   color: var(--color-green-700);
 `;
 
-
-function CabinRow({cabin}){
-  const {imageUrl,name,maxCapacity,regularPrice,discount} = cabin;
+function CabinRow({ cabin }) {
+  const { imageUrl, name, maxCapacity, regularPrice, discount } = cabin;
   return (
-
     <TableRow>
-      <Img src={imageUrl} alt={name}/>
+      <Img src={imageUrl} alt={name} />
       <Cabin>{name}</Cabin>
       <div>{maxCapacity}</div>
       <Price>{formatCurrency(regularPrice)}</Price>
       <Discount>{formatCurrency(discount)}</Discount>
       <button>Delete</button>
-  </TableRow>
-  )
-  
-
+    </TableRow>
+  );
 }
 export default CabinRow;

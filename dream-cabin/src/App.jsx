@@ -17,19 +17,19 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 //   padding: 20px;
 // `;
 
-const queryClient =new QueryClient({
-  defaultOptions:{
-    queries:{
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
       // staleTime:60 * 1000,
-      staleTime:0,
-    }
-  }
+      staleTime: 0,
+    },
+  },
 });
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false}/>
+      <ReactQueryDevtools initialIsOpen={false} />
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
@@ -47,7 +47,7 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
-   </QueryClientProvider>
+    </QueryClientProvider>
   );
 }
 

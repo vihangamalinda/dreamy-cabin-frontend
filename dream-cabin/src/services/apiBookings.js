@@ -121,7 +121,7 @@ const createBooking = async (obj) => {
 };
 const updateBookingStatus = async ({ id, status }) => {
   const url = BOOKINGS + PERFORM_UPDATE_BY_ID(id) + STATUS;
-  return await updateData({ url, obj: { status,id, } });
+  return await updateData({ url, obj: { status, id } });
 };
 
-export { getAllBookings, getBookingById, createBooking,updateBookingStatus };
+export { getAllBookings, getBookingById, createBooking, updateBookingStatus };
