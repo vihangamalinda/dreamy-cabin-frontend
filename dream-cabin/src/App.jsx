@@ -12,7 +12,6 @@ import AppLayout from './ui/AppLayout';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-const SIXSTY_SECONDS = 60 * 1000;
 // const StyleApp = styled.div`
 //   /* background-color: orchid; */
 //   padding: 20px;
@@ -21,7 +20,8 @@ const SIXSTY_SECONDS = 60 * 1000;
 const queryClient =new QueryClient({
   defaultOptions:{
     queries:{
-      staleTime:SIXSTY_SECONDS,
+      // staleTime:60 * 1000,
+      staleTime:0,
     }
   }
 });
