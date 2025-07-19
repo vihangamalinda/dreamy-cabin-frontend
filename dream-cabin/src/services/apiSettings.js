@@ -1,3 +1,7 @@
+import { PERFORM_GET_ALL, PERFORM_UPDATE_BY_ID, SETTINGS } from './apiConfig';
+import { getData, updateData } from './apiHelper';
+
+/*
 import supabase from './supabase';
 
 export async function getSettings() {
@@ -24,4 +28,18 @@ export async function updateSetting(newSetting) {
     throw new Error('Settings could not be updated');
   }
   return data;
+}
+
+*/
+let currentSettingId = -1;
+export async function getSettings() {
+  const currentSetting = (await getData(SETTINGS + PERFORM_GET_ALL))[0];
+  currentSettingId = currentSetting.id;
+  return currentSetting;
+}
+
+export async function updateSetting(obj) {
+  const id = currentSettingId !== -1 ? currentSettingId : 1;
+  const url = SETTINGS + PERFORM_UPDATE_BY_ID(id);
+  return await updateData({url, obj});
 }
