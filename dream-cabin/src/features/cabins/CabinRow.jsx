@@ -44,16 +44,23 @@ const Discount = styled.div`
 `;
 
 function CabinRow({ cabin }) {
-  const { imageUrl, name, maxCapacity, regularPrice, discount,id:cabinId } = cabin;
+  const {
+    imageUrl,
+    name,
+    maxCapacity,
+    regularPrice,
+    discount,
+    id: cabinId,
+  } = cabin;
   const queryClient = useQueryClient();
-  const {isLoading:isDeleting,mutate} = useMutation({
-    mutationFn: (id)=>deleteById(id),
-    onSuccess:()=>{
+  const { isLoading: isDeleting, mutate } = useMutation({
+    mutationFn: (id) => deleteById(id),
+    onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey:["cabin"]
-      })
-    }
-  })
+        queryKey: ['cabin'],
+      });
+    },
+  });
   return (
     <TableRow>
       <Img src={imageUrl} alt={name} />
@@ -61,7 +68,9 @@ function CabinRow({ cabin }) {
       <div>{maxCapacity}</div>
       <Price>{formatCurrency(regularPrice)}</Price>
       <Discount>{formatCurrency(discount)}</Discount>
-      <button onClick={()=>mutate(cabinId)} disabled={isDeleting}>Delete</button>
+      <button onClick={() => mutate(cabinId)} disabled={isDeleting}>
+        Delete
+      </button>
     </TableRow>
   );
 }
