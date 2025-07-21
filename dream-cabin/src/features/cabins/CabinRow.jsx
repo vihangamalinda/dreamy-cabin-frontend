@@ -57,7 +57,7 @@ function CabinRow({ cabin }) {
     mutationFn: (id) => deleteById(id),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['cabin'],
+        queryKey: ['cabins'],
       });
     },
   });
