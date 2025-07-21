@@ -15,7 +15,7 @@ const getData = async (url) => {
 const updateData = async ({ url, obj }) => {
   try {
     console.log(url);
-    const response = fetch(url, {
+    const response =  await fetch(url, {
       method: 'PUT',
       body: JSON.stringify(obj),
       headers: { 'Content-Type': 'application/json' },
@@ -30,7 +30,7 @@ const updateData = async ({ url, obj }) => {
 
 const deleteData = async (url) => {
   try {
-    const response = fetch(url, {
+    const response = await fetch(url, {
       method: 'DELETE',
     });
     validateResponse(response);
