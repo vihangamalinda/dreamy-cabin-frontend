@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import styled from 'styled-components';
 import { formatCurrency } from '../../utils/helpers.js';
+import { useMutation } from '@tanstack/react-query';
+import { deleteById } from '../../services/apiCabins.js';
 
 const TableRow = styled.div`
   display: grid;
@@ -42,7 +44,11 @@ const Discount = styled.div`
 `;
 
 function CabinRow({ cabin }) {
-  const { imageUrl, name, maxCapacity, regularPrice, discount } = cabin;
+  const { imageUrl, name, maxCapacity, regularPrice, discount,id:cabinId } = cabin;
+
+  const {isLoading:isDeleting,mutate} = useMutation({
+    mutationFn: (id)=>deleteById(id),
+  })
   return (
     <TableRow>
       <Img src={imageUrl} alt={name} />
@@ -50,7 +56,7 @@ function CabinRow({ cabin }) {
       <div>{maxCapacity}</div>
       <Price>{formatCurrency(regularPrice)}</Price>
       <Discount>{formatCurrency(discount)}</Discount>
-      <button>Delete</button>
+      <button onClick={()=>mutate(cabinId)} disabled={isDeleting}>Delete</button>
     </TableRow>
   );
 }
