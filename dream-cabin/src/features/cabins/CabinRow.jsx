@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import styled from 'styled-components';
 import { formatCurrency } from '../../utils/helpers.js';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteById } from '../../services/apiCabins.js';
 
 const TableRow = styled.div`
@@ -45,9 +45,14 @@ const Discount = styled.div`
 
 function CabinRow({ cabin }) {
   const { imageUrl, name, maxCapacity, regularPrice, discount,id:cabinId } = cabin;
-
+  const queryClient = useQueryClient();
   const {isLoading:isDeleting,mutate} = useMutation({
     mutationFn: (id)=>deleteById(id),
+    onSuccess:()=>{
+      queryClient.invalidateQueries({
+        queryKey:["cabin"]
+      })
+    }
   })
   return (
     <TableRow>
