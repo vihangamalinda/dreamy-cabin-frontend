@@ -20,7 +20,7 @@ export async function deleteById(id) {
 }
 
 export async function createCabin(cabin) {
-  const obj = {...cabin,isActive:true};
-  const url = CABINS+PERFORM_CREATE;
-  await createData({obj,url})
+  const obj = { ...cabin, isActive: true };
+  const url = CABINS + PERFORM_CREATE;
+  await createData({ obj, url });
 }

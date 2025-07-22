@@ -48,9 +48,9 @@ const Label = styled.label`
 
 function CreateCabinForm() {
   const { register, handleSubmit } = useForm();
-  const {mutate,isLoading:isCreating} = useMutation({
+  const { mutate, isLoading: isCreating } = useMutation({
     mutationFn: createCabin,
-    onSuccess: ()=>toast.success("Successfully created")
+    onSuccess: () => toast.success('Successfully created'),
   });
 
   function onSubmit(data) {
@@ -105,7 +105,9 @@ function CreateCabinForm() {
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
-        <Button variation="primary" disabled={isCreating}>Add a cabin</Button>
+        <Button variation="primary" disabled={isCreating}>
+          Add a cabin
+        </Button>
       </FormRow>
     </Form>
   );
