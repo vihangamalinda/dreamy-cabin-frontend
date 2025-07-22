@@ -6,6 +6,9 @@ import Form from '../../ui/Form';
 import Button from '../../ui/Button';
 import FileInput from '../../ui/FileInput';
 import Textarea from '../../ui/Textarea';
+import { useMutation } from '@tanstack/react-query';
+import { createCabin } from '../../services/apiCabins';
+import toast from 'react-hot-toast';
 
 const FormRow = styled.div`
   display: grid;
@@ -45,9 +48,14 @@ const Label = styled.label`
 
 function CreateCabinForm() {
   const { register, handleSubmit } = useForm();
+  const {mutate,isLoading:isCreating} = useMutation({
+    mutationFn: createCabin,
+    onSuccess: ()=>toast.success("Successfully created")
+  });
 
   function onSubmit(data) {
     console.log(data);
+    mutate(data);
   }
 
   return (
@@ -97,7 +105,7 @@ function CreateCabinForm() {
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
-        <Button variation="primary">Edit cabin</Button>
+        <Button variation="primary" disabled={isCreating}>Add a cabin</Button>
       </FormRow>
     </Form>
   );
