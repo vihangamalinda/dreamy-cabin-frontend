@@ -6,7 +6,7 @@ import Row from '../ui/Row';
 import { useState } from 'react';
 
 function Cabins() {
-  const [showForm,setForm] =useState(false);
+  const [showForm, setForm] = useState(false);
   return (
     <>
       <Row type="horizontal">
@@ -15,8 +15,10 @@ function Cabins() {
       </Row>
       <Row>
         <CabinTable />
-      <Button onClick={()=>setForm(!showForm)} variation="primary">Add new Cabin</Button>
-      {showForm && <CreateCabinForm/>}
+        <Button onClick={() => setForm(!showForm)} variation="primary">
+          Add new Cabin
+        </Button>
+        {showForm && <CreateCabinForm />}
       </Row>
     </>
   );

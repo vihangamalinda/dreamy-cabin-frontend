@@ -44,9 +44,9 @@ const Label = styled.label`
 // `;
 
 function CreateCabinForm() {
-  const {register,handleSubmit} =useForm();
-  
-  function onSubmit(data){
+  const { register, handleSubmit } = useForm();
+
+  function onSubmit(data) {
     console.log(data);
   }
 
@@ -54,27 +54,37 @@ function CreateCabinForm() {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormRow>
         <Label htmlFor="name">Cabin name</Label>
-        <Input type="text" id="name" {...register("name")}/>
+        <Input type="text" id="name" {...register('name')} />
       </FormRow>
 
       <FormRow>
         <Label htmlFor="maxCapacity">Maximum capacity</Label>
-        <Input type="number" id="maxCapacity" {...register("maxCapacity")} />
+        <Input type="number" id="maxCapacity" {...register('maxCapacity')} />
       </FormRow>
 
       <FormRow>
         <Label htmlFor="regularPrice">Regular price</Label>
-        <Input type="number" id="regularPrice" {...register("regularPrice")}/>
+        <Input type="number" id="regularPrice" {...register('regularPrice')} />
       </FormRow>
 
       <FormRow>
         <Label htmlFor="discount">Discount</Label>
-        <Input type="number" id="discount" defaultValue={0} {...register("discount")}/>
+        <Input
+          type="number"
+          id="discount"
+          defaultValue={0}
+          {...register('discount')}
+        />
       </FormRow>
 
       <FormRow>
         <Label htmlFor="description">Description for website</Label>
-        <Textarea type="number" id="description" defaultValue="" {...register("description")}/>
+        <Textarea
+          type="number"
+          id="description"
+          defaultValue=""
+          {...register('description')}
+        />
       </FormRow>
 
       <FormRow>
