@@ -49,8 +49,8 @@ const createData = async ({ url, obj }) => {
     });
 
     validateResponse(response);
-    const data = await response.json();
-    return data;
+    // const data = await response.json();
+    // return data;
   } catch (error) {
     console.log('error', error);
   }
